@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'RealDebridKit_Example' do
+  pod 'RealDebridKit', :path => '../'
+
+  target 'RealDebridKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
