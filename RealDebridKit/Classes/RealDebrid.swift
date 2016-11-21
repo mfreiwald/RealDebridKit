@@ -47,4 +47,23 @@ public class RealDebrid {
         }
         
     }
+    
+    public class func unrestrictLink(link:String, password:String, completion: @escaping(_ link:Unrestrict.Link?)->Void) {
+        
+        let parameters: Parameters = [
+            "link": link,
+            "password": password,
+            "remote": 0
+        ]
+        
+        Alamofire.request(API+"/unrestrict/link"+"?auth_token="+API_TOKEN, method: .post, parameters: parameters).responseJSON { response in
+            
+            if let json = response.result.value as? Dictionary<String, Any> {
+                let link = Unrestrict.Link(json: json)
+                
+                completion(link)
+            }
+        }
+        
+    }
 }

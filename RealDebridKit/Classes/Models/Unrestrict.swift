@@ -41,4 +41,73 @@ public struct Unrestrict {
             self.supported = supported
         }
     }
+    
+    public struct Link : Decodable {
+        
+        public let id:String
+        public let filename:String
+        public let mimeType:String?
+        public let filesize:Int
+        public let link:String
+        public let host:String
+        public let chunks:Int
+        public let crc:Int
+        public let download:String
+        public let streamable:Int
+        public let quality:String?
+        //public let alternative:[[String:String]]
+        
+        public init?(json: JSON) {
+            guard let id: String = "id" <~~ json else {
+                return nil
+            }
+            self.id = id
+            
+            guard let filename: String = "filename" <~~ json else {
+                return nil
+            }
+            self.filename = filename
+            
+            self.mimeType = "mimeType" <~~ json
+            
+            guard let filesize: Int = "filesize" <~~ json else {
+                return nil
+            }
+            self.filesize = filesize
+            
+            guard let link: String = "link" <~~ json else {
+                return nil
+            }
+            self.link = link
+            
+            guard let host: String = "host" <~~ json else {
+                return nil
+            }
+            self.host = host
+            
+            guard let chunks: Int = "chunks" <~~ json else {
+                return nil
+            }
+            self.chunks = chunks
+            
+            guard let crc: Int = "crc" <~~ json else {
+                return nil
+            }
+            self.crc = crc
+            
+            guard let download: String = "download" <~~ json else {
+                return nil
+            }
+            self.download = download
+            
+            guard let streamable: Int = "streamable" <~~ json else {
+                return nil
+            }
+            self.streamable = streamable
+            
+            self.quality = "quality" <~~ json
+
+            
+        }
+    }
 }

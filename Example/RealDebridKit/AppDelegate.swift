@@ -26,13 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        RealDebrid.unrestrictCheck(link: "http://uploaded.net/file/h19ql01d", password: "", completion: {(check) in
-            if let _ = check {
-                print(check!.host)
-                print(check!.link)
-                print(check!.filename)
-                print(check!.filesize)
-                print(check!.supported)
+        RealDebrid.unrestrictLink(link: "http://uploaded.net/file/h19ql01d", password: "", completion: {(link) in
+            if let _ = link {
+                print(link!.filename)
+                print(link!.download)
             }
         })
         
