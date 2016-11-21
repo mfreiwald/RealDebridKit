@@ -1,0 +1,6 @@
+framework module Pods_RealDebridKit_Example {
+  umbrella header "Pods-RealDebridKit_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

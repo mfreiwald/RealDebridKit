@@ -1,0 +1,6 @@
+framework module RealDebridKit {
+  umbrella header "RealDebridKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

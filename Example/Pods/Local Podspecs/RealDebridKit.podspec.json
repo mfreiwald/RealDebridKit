@@ -1,0 +1,30 @@
+{
+  "name": "RealDebridKit",
+  "version": "0.1.0",
+  "summary": "A short description of RealDebridKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/RealDebridKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Michael Freiwald": "m.freiwald@icloud.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/RealDebridKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "RealDebridKit/Classes/**/*",
+  "dependencies": {
+    "Alamofire": [
+      "~> 4.1"
+    ],
+    "Gloss": [
+      "~> 1.1"
+    ]
+  }
+}
