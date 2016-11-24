@@ -31,7 +31,6 @@ public class DeviceService : BaseService {
             let request:DataRequest = Alamofire.request(RealDebrid.OAUTH_URL+"/device/code", method: .get, parameters: self.parameters)
             
             request.responseJSON { (response) in
-                print(response)
                 if let json = response.result.value as? Dictionary<String, Any> {
                     if let code = Device.Code(json: json) {
                         complete(code, nil)

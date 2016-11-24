@@ -20,7 +20,7 @@ public struct Error : Decodable {
             self.error = "Unknown Error"
         }
 
-        if let errorCode: Int = "errorCode" <~~ json {
+        if let errorCode: Int = "error_code" <~~ json {
             if let errorCodeEnum = ErrorCode(rawValue: errorCode) {
                 self.errorCode = errorCodeEnum
             } else {

@@ -14,8 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var deviceCode:String = ""
     var clientId:String = ""
     var clientSecret:String = ""
+    
     
     func test(service:DeviceService.CredentialsService) {
         service.perform(complete: { (creden, error) in
@@ -29,6 +31,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.clientSecret = credObj.clientSecret
                     
                     print("Successful Authenticated!")
+                    
+                    TokenService(clientId: self.clientId, clientSecret: self.clientSecret, code: self.deviceCode).perform(complete: { (token, error) in
+                        if let _ = error {
+                            print(error!)
+                        } else {
+                            if let tok = token as? Token {
+                                print("AccessToken: "+tok.accessToken)
+                                
+                                UserService(authToken: tok.accessToken).perform(complete: { (user, error) in
+                                    if let _ = error {
+                                        print(error!)
+                                    } else {
+                                        if let user = user as? User {
+                                            print("Username: " + user.username)
+                                        }
+                                    }
+                                })
+                                
+                                
+                            }
+                        }
+                    })
                     
                 }
             }
@@ -45,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 if let codeObj = code as? Device.Code {
 
+                    self.deviceCode = codeObj.deviceCode
                     print("Open Browser at:\n" + codeObj.directVerificationUrl)
                     
                     sleep(5)
