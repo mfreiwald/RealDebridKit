@@ -44,6 +44,35 @@ public struct Unrestrict {
     
     public struct Link : Decodable {
         
+        public struct Alternative : Decodable {
+            public let id:String
+            public let filename:String
+            public let download:String
+            public let quality:String
+            
+            public init?(json: JSON) {
+                guard let id: String = "id" <~~ json else {
+                    return nil
+                }
+                self.id = id
+                
+                guard let filename: String = "filename" <~~ json else {
+                    return nil
+                }
+                self.filename = filename
+                
+                guard let download: String = "download" <~~ json else {
+                    return nil
+                }
+                self.download = download
+                
+                guard let quality: String = "quality" <~~ json else {
+                    return nil
+                }
+                self.quality = quality
+            }
+        }
+        
         public let id:String
         public let filename:String
         public let mimeType:String?
@@ -55,7 +84,7 @@ public struct Unrestrict {
         public let download:String
         public let streamable:Int
         public let quality:String?
-        //public let alternative:[[String:String]]
+        public let alternative:[Alternative]?
         
         public init?(json: JSON) {
             guard let id: String = "id" <~~ json else {
@@ -106,8 +135,9 @@ public struct Unrestrict {
             self.streamable = streamable
             
             self.quality = "quality" <~~ json
-
+            self.alternative = "alternative" <~~ json
             
         }
     }
+    
 }

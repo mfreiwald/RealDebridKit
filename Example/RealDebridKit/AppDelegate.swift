@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        
+        RealDebrid.provideAPIToken(token: "")
         
         RealDebrid.getUser { (user) in
             if let _ = user {
@@ -26,13 +29,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        RealDebrid.unrestrictLink(link: "http://uploaded.net/file/h19ql01d", password: "", completion: {(link) in
+        RealDebrid.unrestrictCheck(link: "http://uploaded.net/file/h19ql01d", password: "", completion: {(link) in
             if let _ = link {
                 print(link!.filename)
-                print(link!.download)
             }
         })
         
+        /*
+        if let fileURL = Bundle.main.url(forResource: "mm", withExtension: "dlc") {
+            RealDebrid.unrestrictContainerFile(fileURL: fileURL, completion: {(urls) in
+                guard urls != nil else {
+                    print("Fehler")
+                    return
+                }
+
+                RealDebrid.unrestrictLink(link: urls!.first!, completion: { (link) in
+                    if let _ = link {
+                        print(link!.download)
+                        print(link!.filename)
+                        print(link!.filesize)
+                    }
+                })
+            })
+        }
+        */
         return true
     }
 
