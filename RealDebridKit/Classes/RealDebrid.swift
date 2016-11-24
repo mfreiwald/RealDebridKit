@@ -17,7 +17,37 @@ public enum RequestError:String{
 
 
 
-
+public class RealDebridConfiguration {
+    private static let RealDebridKit_CLIENT_ID:String = "S5TZKZVSGHVIY"
+    
+    var clientId:String?
+    var clientSecret:String?
+    
+    private init() {
+        
+    }
+    
+    private init(clientId:String, clientSecret:String) {
+        
+    }
+    
+    private init(clientId:String) {
+        
+    }
+    
+    /**
+     Create a configuration object for
+     @param clientId 
+     @param clientSecret
+    */
+    public class func with(clientId:String, clientSecret:String) -> RealDebridConfiguration {
+        return RealDebridConfiguration()
+    }
+    
+    public class func with(clientId:String) -> RealDebridConfiguration {
+        return RealDebridConfiguration()
+    }
+}
 
 public class RealDebrid {
     public static let API_URL = "https://api.real-debrid.com/rest"
@@ -25,6 +55,7 @@ public class RealDebrid {
     public static let API_CLIENT_ID = "S5TZKZVSGHVIY"
     
     enum APIMethod : String {
+        case Token = "/token"
         case User = "/user"
         case UnrestrictCheck = "/unrestrict/check"
         case UnrestrictLink = "/unrestrict/link"
