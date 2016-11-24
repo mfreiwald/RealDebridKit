@@ -1,0 +1,57 @@
+
+1.) Client-ID vorhanden?
+	-> Nein -> Use RealDebridKit ClientId -> 2.)
+	-> Ja -> 2.)
+
+2.) Client-Secret vorhanden?
+	-> Nein -> 3.)
+	-> Ja -> 4.)
+
+Entweder:
+	3.) 
+		https://api.real-debrid.com/oauth/v2/device/code?client_id=ABCDEFGHIJKLM&new_credentials=yes
+			-> device_code
+			-> user_code
+			->
+
+		Webbrower Verficiation
+
+		https://api.real-debrid.com/oauth/v2/device/credentials?client_id=ABCDEFGHIJKLM&code=device_code
+			-> Error if not authorized
+			-> client_id
+			-> client_secret
+
+		-> 5.)
+
+Oder:
+	4.)
+		https://api.real-debrid.com/oauth/v2/device/code?client_id=ABCDEFGHIJKLM
+			-> device_code
+			-> user_code
+
+		Webbrowser Verification
+
+
+
+5.)
+	curl -X POST "https://api.real-debrid.com/oauth/v2/token" -d "client_id=ABCDEFGHIJKLM&client_secret=abcdefghsecret0123456789&code=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&grant_type=http://oauth.net/grant_type/device/1.0"
+
+	Store AccessToken & RestoreToken
+
+6.)
+	Use AccessToken for each Request
+
+7.) 
+	Error 8 - Bad Token
+	-> 8.)
+
+8.) 
+	Get new AccessToken
+		<- client_id
+		<- client_secret
+		<- code = refresh_token
+		<- grand_type = http://oauth.net/grant_type/device/1.0
+		-> access_token
+		-> expire_in
+		-> token_type = Bearer
+		-> refresh_token

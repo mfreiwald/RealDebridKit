@@ -1,8 +1,8 @@
 PODS:
-  - Alamofire (4.1.0)
+  - Alamofire (4.2.0)
   - Gloss (1.1.0)
   - RealDebridKit (0.1.0):
-    - Alamofire (~> 4.1)
+    - Alamofire (~> 4.2)
     - Gloss (~> 1.1)
 
 DEPENDENCIES:
@@ -13,10 +13,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: e266cf991b933498df791e645e0d8ac294492153
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   Gloss: a8340c124ff69c5d1c12e06c252373f4a16d2958
-  RealDebridKit: c7ed376f086af9f2b3e2abb0f7a2765514af3d35
+  RealDebridKit: 98332f4a6d1dda0d4f6df9b55ab965bdf236020a
 
 PODFILE CHECKSUM: 55011ddeb9b057ed107399feab01c35facef6fc5
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0.beta.1

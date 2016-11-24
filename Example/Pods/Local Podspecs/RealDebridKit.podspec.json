@@ -21,7 +21,7 @@
   "source_files": "RealDebridKit/Classes/**/*",
   "dependencies": {
     "Alamofire": [
-      "~> 4.1"
+      "~> 4.2"
     ],
     "Gloss": [
       "~> 1.1"

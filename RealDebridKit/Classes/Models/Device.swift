@@ -12,12 +12,12 @@ import Gloss
 public class Device {
     
     public struct Code : Decodable {
-        let deviceCode:String
-        let userCode:String
-        let interval:Int
-        let expiresIn:Int
-        let verificationUrl:String
-        let directVerificationUrl:String
+        public let deviceCode:String
+        public let userCode:String
+        public let interval:Int
+        public let expiresIn:Int
+        public let verificationUrl:String
+        public let directVerificationUrl:String
         
         public init?(json: JSON) {
             guard let deviceCode: String = "device_code" <~~ json else {
@@ -35,7 +35,7 @@ public class Device {
             }
             self.interval = interval
             
-            guard let expiresIn: Int = "expires in" <~~ json else {
+            guard let expiresIn: Int = "expires_in" <~~ json else {
                 return nil
             }
             self.expiresIn = expiresIn
@@ -53,8 +53,8 @@ public class Device {
     }
     
     public struct Credentials : Decodable {
-        let clientId:String
-        let clientSecret:String
+        public let clientId:String
+        public let clientSecret:String
         
         public init?(json: JSON) {
             guard let clientId: String = "client_id" <~~ json else {

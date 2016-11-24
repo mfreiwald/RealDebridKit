@@ -10,20 +10,24 @@ import Foundation
 import Gloss
 
 public struct Error : Decodable {
-    let error:String
-    let errorCode:ErrorCode
-    public init?(json: JSON) {
-        guard let error: String = "error" <~~ json else {
-            return nil
+    public let error:String
+    public let errorCode:ErrorCode
+    
+    public init(json: JSON) {
+        if let error: String = "error" <~~ json {
+            self.error = error
+        } else {
+            self.error = "Unknown Error"
         }
-        self.error = error
 
-        guard let errorCode: Int = "errorCode" <~~ json else {
-            return nil
+        if let errorCode: Int = "errorCode" <~~ json {
+            if let errorCodeEnum = ErrorCode(rawValue: errorCode) {
+                self.errorCode = errorCodeEnum
+            } else {
+                self.errorCode = ErrorCode.UnknownError
+            }
+        } else {
+            self.errorCode = ErrorCode.UnknownError
         }
-        guard let errorCodeEnum = ErrorCode(rawValue: errorCode) else {
-            return nil
-        }
-        self.errorCode = errorCodeEnum
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 
 public enum ErrorCode : Int {
+    case UnknownError = -500
     case InternalError = -1
     case MissingParameter = 1
     case BadParameterValue = 2

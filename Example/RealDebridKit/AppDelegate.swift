@@ -14,11 +14,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var clientId:String = ""
+    var clientSecret:String = ""
+    
+    func test(service:DeviceService.CredentialsService) {
+        service.perform(complete: { (creden, error) in
+            if let _ = error {
+                print(error!)
+                sleep(5)
+                self.test(service: service)
+            } else {
+                if let credObj = creden as? Device.Credentials {
+                    self.clientId = credObj.clientId
+                    self.clientSecret = credObj.clientSecret
+                    
+                    print("Successful Authenticated!")
+                    
+                }
+            }
+        })
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
+        let codeService = DeviceService.CodeService(clientId: RealDebrid.DEFAULT_CLIENT_ID, newCredentials: true)
+        codeService.perform { (code, error) in
+            if let _ = error {
+                print(error)
+            } else {
+                if let codeObj = code as? Device.Code {
+
+                    print("Open Browser at:\n" + codeObj.directVerificationUrl)
+                    
+                    sleep(5)
+                    
+                    let credService = DeviceService.CredentialsService(clientId: RealDebrid.DEFAULT_CLIENT_ID, code: codeObj.deviceCode)
+                    self.test(service: credService)
+                
+                }
+            }
+        }
         
+        
+        /*
         RealDebrid.provideAPIToken(token: "")
         
         RealDebrid.getUser { (user) in
@@ -34,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(link!.filename)
             }
         })
-        
+        */
         /*
         if let fileURL = Bundle.main.url(forResource: "mm", withExtension: "dlc") {
             RealDebrid.unrestrictContainerFile(fileURL: fileURL, completion: {(urls) in

@@ -50,6 +50,14 @@ public class RealDebridConfiguration {
 }
 
 public class RealDebrid {
+    
+    public static let REST_URL = "https://api.real-debrid.com/rest/1.0"
+    public static let OAUTH_URL = "https://api.real-debrid.com/oauth/v2"
+    public static let DEFAULT_CLIENT_ID = "S5TZKZVSGHVIY"
+    
+    
+    
+    
     public static let API_URL = "https://api.real-debrid.com/rest"
     public static let API_VERSION = "/1.0"
     public static let API_CLIENT_ID = "S5TZKZVSGHVIY"
