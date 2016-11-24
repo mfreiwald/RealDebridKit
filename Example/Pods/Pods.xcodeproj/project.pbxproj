@@ -15,7 +15,14 @@
 		3982B850C43B41BA6D25F440F0412E9B /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261092A3FC037DE2CA35674BCC65B9FA /* Timeline.swift */; };
 		3CE6CCEA5B8CA91B9C421D0AA9FA76DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD01F0336376FFB8DB9B8C92B2A64E5 /* Foundation.framework */; };
 		4410FC385A2CC0E7D78A1EEAC0DCD240 /* ExtensionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2F986BB15B7A10978A0554D5D03C5 /* ExtensionDictionary.swift */; };
-		4CA9EA741DE6F6E80024B6DB /* TokenEP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA9EA731DE6F6E80024B6DB /* TokenEP.swift */; };
+		4CA9EA791DE727400024B6DB /* ErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA9EA771DE7273C0024B6DB /* ErrorCode.swift */; };
+		4CA9EA7B1DE727470024B6DB /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA9EA731DE6F6E80024B6DB /* TokenService.swift */; };
+		4CA9EA7E1DE72E8F0024B6DB /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA9EA7C1DE72E4E0024B6DB /* Token.swift */; };
+		4CA9EA801DE731610024B6DB /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA9EA7F1DE731600024B6DB /* Error.swift */; };
+		4CA9EA831DE733E40024B6DB /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA9EA821DE733E40024B6DB /* Authentication.swift */; };
+		4CA9EA851DE7340C0024B6DB /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA9EA841DE7340C0024B6DB /* BaseService.swift */; };
+		4CA9EA871DE736460024B6DB /* DeviceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA9EA861DE736460024B6DB /* DeviceService.swift */; };
+		4CA9EA891DE73A0A0024B6DB /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA9EA881DE73A0A0024B6DB /* Device.swift */; };
 		4CC2EE521DE3472100E4907B /* Unrestrict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC2EE501DE346DB00E4907B /* Unrestrict.swift */; };
 		5236CBA51F4363FC8FF73FF2C1660457 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D2D8D99D2FC78D246257D234F7EBA /* User.swift */; };
 		60F3767E90790BFA7ACBCCAA83E64D5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD01F0336376FFB8DB9B8C92B2A64E5 /* Foundation.framework */; };
@@ -108,7 +115,14 @@
 		3910FA1BB8D4402B9493E7CB7236A075 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A124AD263F743E176DE87084B81F9F7 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		3AC08F65A091C66DFD6ECC624E1737AC /* Pods-RealDebridKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RealDebridKit_Tests-umbrella.h"; sourceTree = "<group>"; };
-		4CA9EA731DE6F6E80024B6DB /* TokenEP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenEP.swift; sourceTree = "<group>"; };
+		4CA9EA731DE6F6E80024B6DB /* TokenService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
+		4CA9EA771DE7273C0024B6DB /* ErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
+		4CA9EA7C1DE72E4E0024B6DB /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		4CA9EA7F1DE731600024B6DB /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		4CA9EA821DE733E40024B6DB /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		4CA9EA841DE7340C0024B6DB /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		4CA9EA861DE736460024B6DB /* DeviceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceService.swift; sourceTree = "<group>"; };
+		4CA9EA881DE73A0A0024B6DB /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		4CC2EE501DE346DB00E4907B /* Unrestrict.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unrestrict.swift; sourceTree = "<group>"; };
 		4D10E4991A6506FEE587A7078EDCAABC /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 		50B8019BC7C562CC89E58AF98234A5AE /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
@@ -243,6 +257,8 @@
 			isa = PBXGroup;
 			children = (
 				A2142641C99F6E1D1167C0327199D636 /* RealDebrid.swift */,
+				4CA9EA771DE7273C0024B6DB /* ErrorCode.swift */,
+				4CA9EA821DE733E40024B6DB /* Authentication.swift */,
 				4CA9EA721DE6F6BE0024B6DB /* Endpoint */,
 				992FD0225E51E611F41A3B536BFB323C /* Models */,
 			);
@@ -278,7 +294,9 @@
 		4CA9EA721DE6F6BE0024B6DB /* Endpoint */ = {
 			isa = PBXGroup;
 			children = (
-				4CA9EA731DE6F6E80024B6DB /* TokenEP.swift */,
+				4CA9EA841DE7340C0024B6DB /* BaseService.swift */,
+				4CA9EA731DE6F6E80024B6DB /* TokenService.swift */,
+				4CA9EA861DE736460024B6DB /* DeviceService.swift */,
 			);
 			path = Endpoint;
 			sourceTree = "<group>";
@@ -385,8 +403,11 @@
 		992FD0225E51E611F41A3B536BFB323C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4CA9EA7F1DE731600024B6DB /* Error.swift */,
 				AC7D2D8D99D2FC78D246257D234F7EBA /* User.swift */,
+				4CA9EA7C1DE72E4E0024B6DB /* Token.swift */,
 				4CC2EE501DE346DB00E4907B /* Unrestrict.swift */,
+				4CA9EA881DE73A0A0024B6DB /* Device.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -632,7 +653,6 @@
 				A79AC30123B0C2177D67F6ED6A1B3215 /* SessionManager.swift in Sources */,
 				E1F583CB4A68A928CD197250AA752926 /* TaskDelegate.swift in Sources */,
 				3982B850C43B41BA6D25F440F0412E9B /* Timeline.swift in Sources */,
-				4CA9EA741DE6F6E80024B6DB /* TokenEP.swift in Sources */,
 				FFFDD494EE6D1B83DDAF5F2721F685A6 /* Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -671,10 +691,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CA9EA791DE727400024B6DB /* ErrorCode.swift in Sources */,
+				4CA9EA7B1DE727470024B6DB /* TokenService.swift in Sources */,
 				AD339606AF482A415169CC92FDD0AC9F /* RealDebrid.swift in Sources */,
+				4CA9EA891DE73A0A0024B6DB /* Device.swift in Sources */,
 				D50218096C31334C31F8278BFD2C36C0 /* RealDebridKit-dummy.m in Sources */,
+				4CA9EA871DE736460024B6DB /* DeviceService.swift in Sources */,
 				4CC2EE521DE3472100E4907B /* Unrestrict.swift in Sources */,
 				5236CBA51F4363FC8FF73FF2C1660457 /* User.swift in Sources */,
+				4CA9EA801DE731610024B6DB /* Error.swift in Sources */,
+				4CA9EA7E1DE72E8F0024B6DB /* Token.swift in Sources */,
+				4CA9EA851DE7340C0024B6DB /* BaseService.swift in Sources */,
+				4CA9EA831DE733E40024B6DB /* Authentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
