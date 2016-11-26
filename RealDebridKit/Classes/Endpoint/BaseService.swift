@@ -11,16 +11,22 @@ import Alamofire
 
 public class BaseService {
     
-    var headers:HTTPHeaders
-    var parameters:Parameters
+    internal var headers:HTTPHeaders
+    internal var parameters:Parameters
+    internal var url:String { return "" }
     
-    init() {
+    internal init() {
         self.headers = HTTPHeaders()
         self.parameters = Parameters()
     }
     
-    public func perform(complete: @escaping(_ data:Any?, _ error:ErrorCode?)->Void) {
-        complete(nil, ErrorCode.UnknownError)
+    public func perform(completion: @escaping(Any?)->Void) {
+        completion(nil)
+    }
+    
+    internal func createRequest(method:HTTPMethod = .get) -> DataRequest {
+        let request:DataRequest = Alamofire.request(url, method: method, parameters: self.parameters, headers: self.headers)
+        return request
     }
     
 }

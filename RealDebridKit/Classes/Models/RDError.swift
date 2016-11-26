@@ -9,7 +9,7 @@
 import Foundation
 import Gloss
 
-public struct Error : Decodable {
+public struct RDError : Decodable {
     public let error:String
     public let errorCode:ErrorCode
     
@@ -29,5 +29,15 @@ public struct Error : Decodable {
         } else {
             self.errorCode = ErrorCode.UnknownError
         }
+    }
+    
+    public init() {
+        self.error = "Unknown Error"
+        self.errorCode = ErrorCode.UnknownError
+    }
+    
+    public init(code:ErrorCode) {
+        self.errorCode = code
+        self.error = String(describing: code)
     }
 }

@@ -9,9 +9,13 @@
 import Foundation
 import Alamofire
 
-public class DeviceService : BaseService {
+public struct DeviceService {
     
-    public class CodeService : BaseService {
+    public class Code : BaseService {
+        
+        override var url: String {
+            return RealDebrid.OAUTH_URL+"/device/code"
+        }
         
         public init(clientId:String) {
             super.init()
@@ -27,24 +31,22 @@ public class DeviceService : BaseService {
             }
         }
         
-        public override func perform(complete: @escaping (Any?, ErrorCode?) -> Void) {
-            let request:DataRequest = Alamofire.request(RealDebrid.OAUTH_URL+"/device/code", method: .get, parameters: self.parameters)
-            
-            request.responseJSON { (response) in
+        public override func perform(completion: @escaping (Any?) -> Void) {
+            createRequest(method: .get).responseJSON { (response) in
                 if let json = response.result.value as? Dictionary<String, Any> {
-                    if let code = Device.Code(json: json) {
-                        complete(code, nil)
-                    } else {
-                        let err = Error(json: json)
-                        complete(err, err.errorCode)
-                    }
-                    
+                    completion(Device.Code(json: json) ?? RDError(json: json))
+                } else {
+                    completion(RDError(code: ErrorCode.JsonReadError))
                 }
             }
         }
     }
     
-    public class CredentialsService : BaseService {
+    public class Credentials : BaseService {
+        
+        override var url: String {
+            return RealDebrid.OAUTH_URL+"/device/credentials"
+        }
         
         public init(clientId:String, code:String) {
             super.init()
@@ -52,19 +54,12 @@ public class DeviceService : BaseService {
             self.parameters["code"] = code
         }
         
-        public override func perform(complete: @escaping (Any?, ErrorCode?) -> Void) {
-            let request:DataRequest = Alamofire.request(RealDebrid.OAUTH_URL+"/device/credentials", method: .get, parameters: self.parameters)
-            
-            request.responseJSON { (response) in
-
+        public override func perform(completion: @escaping (Any?) -> Void) {
+            createRequest(method: .get).responseJSON { (response) in
                 if let json = response.result.value as? Dictionary<String, Any> {
-                    if let cred = Device.Credentials(json: json) {
-                        complete(cred, nil)
-                    } else {
-                        let err = Error(json: json)
-                        complete(err, err.errorCode)
-                    }
-                    
+                    completion(Device.Credentials(json: json) ?? RDError(json: json))
+                } else {
+                    completion(RDError(code: ErrorCode.JsonReadError))
                 }
             }
         }

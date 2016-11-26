@@ -14,90 +14,117 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var deviceCode:String = ""
-    var clientId:String = ""
-    var clientSecret:String = ""
+    var deviceCode:String {
+        get {
+            return UserDefaults.standard.string(forKey: "deviceCode") ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "deviceCode")
+        }
+    }
+    var clientId:String {
+        get {
+            return UserDefaults.standard.string(forKey: "clientId") ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "clientId")
+        }
+    }
+    var clientSecret:String {
+        get {
+            return UserDefaults.standard.string(forKey: "clientSecret") ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "clientSecret")
+        }
+    }
+    var authToken:String {
+        get {
+            return UserDefaults.standard.string(forKey: "authToken") ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "authToken")
+        }
+    }
     
-    
-    func test(service:DeviceService.CredentialsService) {
-        service.perform(complete: { (creden, error) in
-            if let _ = error {
-                print(error!)
+    func test(service:DeviceService.Credentials) {
+        service.perform { (data) in
+            guard let cred = data as? Device.Credentials else {
+                print(data as! RDError)
                 sleep(5)
                 self.test(service: service)
-            } else {
-                if let credObj = creden as? Device.Credentials {
-                    self.clientId = credObj.clientId
-                    self.clientSecret = credObj.clientSecret
-                    
-                    print("Successful Authenticated!")
-                    
-                    TokenService(clientId: self.clientId, clientSecret: self.clientSecret, code: self.deviceCode).perform(complete: { (token, error) in
-                        if let _ = error {
-                            print(error!)
-                        } else {
-                            if let tok = token as? Token {
-                                print("AccessToken: "+tok.accessToken)
-                                
-                                UserService(authToken: tok.accessToken).perform(complete: { (user, error) in
-                                    if let _ = error {
-                                        print(error!)
-                                    } else {
-                                        if let user = user as? User {
-                                            print("Username: " + user.username)
-                                        }
-                                    }
-                                })
-                                
-                                
-                            }
-                        }
-                    })
-                    
-                }
+                return
             }
-        })
-    }
 
+            self.clientId = cred.clientId
+            self.clientSecret = cred.clientSecret
+            
+            print("Successful Authenticated!")
+                    
+            TokenService(clientId: self.clientId, clientSecret: self.clientSecret, code: self.deviceCode).perform { (data) in
+                guard let token = data as? Token else {
+                    print(data as! RDError)
+                    return
+                }
+                
+                print("AccessToken: "+token.accessToken)
+                self.authToken = token.accessToken
+                
+                self.showUser()
+            }
+        }
+    }
+    
+    func showUser() {
+        UserService(authToken: self.authToken).perform { (data) in
+            guard let user = data as? User else {
+                print(data as! RDError)
+                return
+            }
+            print("Username: " + user.username)
+        }
+    }
+ 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        let codeService = DeviceService.CodeService(clientId: RealDebrid.DEFAULT_CLIENT_ID, newCredentials: true)
-        codeService.perform { (code, error) in
-            if let _ = error {
-                print(error)
-            } else {
-                if let codeObj = code as? Device.Code {
-
-                    self.deviceCode = codeObj.deviceCode
-                    print("Open Browser at:\n" + codeObj.directVerificationUrl)
-                    
-                    sleep(5)
-                    
-                    let credService = DeviceService.CredentialsService(clientId: RealDebrid.DEFAULT_CLIENT_ID, code: codeObj.deviceCode)
-                    self.test(service: credService)
-                
-                }
+        
+        
+        
+        
+        
+        if(self.authToken == "") {
+        
+        let codeService = DeviceService.Code(clientId: RealDebrid.DEFAULT_CLIENT_ID, newCredentials: true)
+        codeService.perform { (data) in
+            guard let code = data as? Device.Code else {
+                print(data as! RDError)
+                return
             }
+            
+
+            self.deviceCode = code.deviceCode
+            print("Open Browser at:\n" + code.directVerificationUrl)
+                    
+            sleep(5)
+                    
+            let credService = DeviceService.Credentials(clientId: RealDebrid.DEFAULT_CLIENT_ID, code: code.deviceCode)
+            self.test(service: credService)
+            }
+        } else {
+        
+            showUser()
         }
         
         
         /*
-        RealDebrid.provideAPIToken(token: "")
-        
-        RealDebrid.getUser { (user) in
-            if let _ = user {
-                print(user!.username)
-            } else {
-                print("user is nil")
+        UnrestrictService.Check(link: "http://uploaded.net/file/h19ql01d").perform { (data) in
+            guard let check = data as? Unrestrict.Check else {
+                print(data as! RDError)
+                return
             }
+            print(check.filename)
         }
-        
-        RealDebrid.unrestrictCheck(link: "http://uploaded.net/file/h19ql01d", password: "", completion: {(link) in
-            if let _ = link {
-                print(link!.filename)
-            }
-        })
         */
         /*
         if let fileURL = Bundle.main.url(forResource: "mm", withExtension: "dlc") {

@@ -12,6 +12,10 @@ import Alamofire
 
 public class TokenService : BaseService {
     
+    override var url: String {
+        return RealDebrid.OAUTH_URL+"/token"
+    }
+    
     public init(clientId:String, clientSecret:String, code:String) {
         super.init()
         self.parameters = [
@@ -32,21 +36,12 @@ public class TokenService : BaseService {
         ]
     }
     
-    public override func perform(complete: @escaping (Any?, ErrorCode?) -> Void) {
-        let request:DataRequest = Alamofire.request(RealDebrid.OAUTH_URL+"/token", method: .post, parameters: self.parameters)
-        request.responseJSON { (response) in
-            print("TokenService")
-            print(" \(self.parameters)")
-            print(" \(response.request!.url!)")
-            print(" \(response)")
+    public override func perform(completion: @escaping (Any?) -> Void) {
+        createRequest(method: .post).responseJSON { (response) in
             if let json = response.result.value as? Dictionary<String, Any> {
-                if let token = Token(json: json) {
-                    complete(token, nil)
-                } else {
-                    let err = Error(json: json)
-                    complete(err, err.errorCode)
-                }
-                
+                completion(Token(json: json) ?? RDError(json: json))
+            } else {
+                completion(RDError(code: ErrorCode.JsonReadError))
             }
         }
     }
