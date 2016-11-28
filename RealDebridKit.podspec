@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'RealDebridKit'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of RealDebridKit.'
+  s.summary          = 'With RealDebridKit you can use to API of real-debrid.com (Ref.: https://api.real-debrid.com)'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,14 +18,16 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+With RealDebridKit you can use the API of real-debrid.com. (Ref.: https://api.real-debrid.com). 
+The user of your app only needs an account at real-debrid.
+If you like, you can get your own clientid and clientsecret. Please contact the support of realdebrid.
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/RealDebridKit'
+  s.homepage         = 'https://github.com/mfreiwald/RealDebridKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Michael Freiwald' => 'm.freiwald@icloud.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/RealDebridKit.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/mfreiwald/RealDebridKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
