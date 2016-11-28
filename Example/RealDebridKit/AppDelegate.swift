@@ -46,6 +46,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(newValue, forKey: "authToken")
         }
     }
+    var refreshToken:String {
+        get {
+            return UserDefaults.standard.string(forKey: "refreshToken") ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "refreshToken")
+        }
+    }
     
     func test(service:DeviceService.Credentials) {
         service.perform { (data) in
@@ -69,7 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 print("AccessToken: "+token.accessToken)
                 self.authToken = token.accessToken
-                
+                self.refreshToken = token.refreshToken
+
                 self.showUser()
             }
         }
