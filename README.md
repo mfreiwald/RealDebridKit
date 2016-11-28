@@ -1,6 +1,6 @@
 # RealDebridKit
 
-[![CI Status](http://img.shields.io/travis/Michael Freiwald/RealDebridKit.svg?style=flat)](https://travis-ci.org/Michael Freiwald/RealDebridKit)
+[![CI Status](http://img.shields.io/travis/mfreiwald/RealDebridKit.svg?style=flat)](https://travis-ci.org/mfreiwald/RealDebridKit)
 [![Version](https://img.shields.io/cocoapods/v/RealDebridKit.svg?style=flat)](http://cocoapods.org/pods/RealDebridKit)
 [![License](https://img.shields.io/cocoapods/l/RealDebridKit.svg?style=flat)](http://cocoapods.org/pods/RealDebridKit)
 [![Platform](https://img.shields.io/cocoapods/p/RealDebridKit.svg?style=flat)](http://cocoapods.org/pods/RealDebridKit)
