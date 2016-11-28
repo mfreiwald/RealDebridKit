@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RealDebridKit'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'With RealDebridKit you can use to API of real-debrid.com (Ref.: https://api.real-debrid.com)'
 
 # This description is used to generate tags and improve search results.

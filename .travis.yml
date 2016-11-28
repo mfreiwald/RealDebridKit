@@ -15,6 +15,7 @@ osx_image: xcode8
 before_install:
 - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
 - pod repo update
+script:
 - xcodebuild -version
 - xcodebuild -showsdks
 - xcodebuild -workspace Example/RealDebridKit.xcworkspace -scheme RealDebridKit-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty

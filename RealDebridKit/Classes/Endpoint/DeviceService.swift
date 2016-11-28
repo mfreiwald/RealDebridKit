@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-public struct DeviceService {
+public class DeviceService {
     
     public class Code : BaseService {
         

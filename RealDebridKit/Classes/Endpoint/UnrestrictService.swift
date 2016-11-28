@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-public struct UnrestrictService {
+public class UnrestrictService {
     
     public class Check : BaseService {
         
